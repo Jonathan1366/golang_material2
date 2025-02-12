@@ -1,0 +1,34 @@
+package golangjson
+
+import (
+
+	"encoding/json"
+	"fmt"
+	// "strings"
+	"testing"
+)
+
+func TestMapDecode(t *testing.T)  {
+	jsonString:=`{"id":"p0001","name":"Apple", "price":20000000}`
+	jsonBytes:=[]byte(jsonString)
+
+	var result map[string]interface{}
+	json.Unmarshal(jsonBytes,&result)
+	fmt.Println(result)
+	fmt.Println(result["id"])
+	fmt.Println(result["name"])
+	fmt.Println(result["price"])
+
+
+}
+
+func TestMapEncode(t*testing.T)  {
+	product:=map[string]interface{}{
+		"id":"P001",
+		"name":"Apple aja",
+		"price": 2000000,
+
+	}
+	bytes, _:=json.Marshal(product)
+	fmt.Println(string(bytes))
+}
